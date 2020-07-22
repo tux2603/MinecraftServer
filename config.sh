@@ -230,4 +230,6 @@ cat << EOF >startServer.sh
 java -Xmx${maxRam}G -Xms${minRam}G -jar server.jar nogui
 EOF
 
+chmod 0755 startServer.sh
+
 echo "Done. Start the server by running './startServer.sh'"
