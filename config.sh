@@ -146,10 +146,10 @@ if (echo $response | grep -qPi '^y'); then
     echo -n "Nether enabled (default true): "
     read allowNether
 
-    echo -n "Enable whitelist (default true): "
+    echo -n "Enable whitelist (default false): "
     read whitelist
 
-    echo -n "Spawn NPCs (default true)"
+    echo -n "Spawn NPCs (default true): "
     read spawnNPCS 
 
     echo -n "Spawn animals (default true): "
@@ -177,7 +177,7 @@ motd=${motd:-"Fork me on github! https://github.comtux2603/"}
 
 echo "Configuring server..."
 
-cat << EOF
+cat << EOF >server.properties
 #Minecraft server properties
 broadcast-rcon-to-ops=true
 view-distance=$viewDistance
@@ -225,7 +225,7 @@ allow-flight=true
 max-world-size=29999984
 EOF
 
-cat << EOF
+cat << EOF >startServer.sh
 #!/bin/bash
 java -Xmx${maxRam}G -Xms${minRam}G -jar server.jar nogui
 EOF
