@@ -84,7 +84,7 @@ versions=( ["1.2.1"]="https://assets.minecraft.net/1_2/minecraft_server.jar"
         ["1.16.3"]="https://launcher.mojang.com/v1/objects/f02f4473dbf152c23d7d484952121db0b36698cb/server.jar"
         ["1.16.4"]="https://launcher.mojang.com/v1/objects/35139deedbd5182953cf1caa23835da59ca3d7cd/server.jar")
 
-select version in ${!versions[@]}; do
+select version in `for i in ${!versions[@]}; do echo $i; done | sort -n`; do
     echo "Downloading server $version"
     echo "${versions[$version]}"
     wget -O server.jar "${versions[$version]}"
